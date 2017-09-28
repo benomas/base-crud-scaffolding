@@ -1,0 +1,20 @@
+{
+    "name"       : "benomas/base-crud-scaffolding",
+    "description": "Base crud scaffolding",
+    "type"       : "library",
+    "license"    : "MIT",
+    "authors"    : [
+        {
+            "name" : "Afdael Benigno Michel Velasco",
+            "email": "benomas@gmail.com",
+            "role" : "Developer"
+        }
+    ],
+    "autoload": {
+        "classmap": [
+            "src",
+            "src/commands"
+        ]
+    },
+    "require": {}
+}

@@ -1,0 +1,11 @@
+<?php
+namespace App\Persistence\Models\$ENTITYSEGMENTS$;
+use App\Persistence\Models\BaseModel;
+
+class $ENTITY$ extends BaseModel
+{
+    protected $table      ='$MAINTABLE$';
+    protected $primarykey = 'id';
+    public $timestamps    = false;
+    protected $fillable   = [];
+}
