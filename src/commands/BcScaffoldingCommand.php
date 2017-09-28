@@ -8,7 +8,7 @@ use Symfony\Component\Console\Input\InputArgument;
 
 class BcScaffoldingCommand extends Command {
 
-    protected $name = 'make:scaffold';
+    protected $signature   = 'scaffold';
     protected $description = 'Command description.';
     protected $entitysegments;
     protected $entity;
