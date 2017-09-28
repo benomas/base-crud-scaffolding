@@ -1,5 +1,5 @@
 {
-    "name"       : "benomas/base-crud-scaffolding",
+    "name"       : "benomas/bcscaffolding",
     "description": "Base crud scaffolding",
     "type"       : "library",
     "license"    : "MIT",

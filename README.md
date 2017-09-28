@@ -9,7 +9,7 @@ Add dependency on our composer.json at the root of laravel.
 ```js
 {
     "require": {
-        "benomas/base-crud-scaffolding": "dev-master"
+        "benomas/bcscaffolding": "dev-master"
     }
 }
 ```
@@ -26,7 +26,7 @@ Add the following service provider for this package.
 // config/app.php
 
 'providers' => [
-    Benomas\base-crud-scaffolding\ScaffoldingServiceProvider::class,
+    Benomas\bcscaffolding\ScaffoldingServiceProvider::class,
 ];
 ```
 
