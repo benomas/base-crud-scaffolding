@@ -26,7 +26,7 @@ Add the following service provider for this package.
 // config/app.php
 
 'providers' => [
-    Benomas\bcscaffolding\ScaffoldingServiceProvider::class,
+    Benomas\Bcscaffolding\ScaffoldingServiceProvider::class,
 ];
 ```
 
