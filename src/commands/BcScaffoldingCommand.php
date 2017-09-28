@@ -8,7 +8,7 @@ use Symfony\Component\Console\Input\InputArgument;
 
 class BcScaffoldingCommand extends Command {
 
-    protected $signature   = 'scaffold';
+    protected $signature   = 'scaffold {modo} {classes} {entitysegments} {entity} {maintable}';
     protected $description = 'Command description.';
     protected $entitysegments;
     protected $entity;
@@ -103,13 +103,13 @@ class BcScaffoldingCommand extends Command {
 
     public function handle()
     {
-        $modo = $this->ask("modo (create,delete):");
-        $classes = $this->ask("classes to process (controller,request,repository,model):");
-        $this->classes = explode(",", $classes);
-        $this->entitysegments = $this->ask("specificPath:");
-        $this->entity = $this->ask("Entidy:");
+        $modo                 = $this->argument("modo");
+        $classes              = $this->argument("classes");
+        $this->classes        = explode(",", $classes);
+        $this->entitysegments = $this->argument("entitysegments");
+        $this->entity         = $this->argument("entity");
         if($modo==="create"){
-            $this->maintable = $this->ask("Table (if has schema, concat it):");
+            $this->maintable = $this->argument("maintable");
             try{
                 if(in_array("controller",$this->classes))
                     $this->makeController();
@@ -139,5 +139,26 @@ class BcScaffoldingCommand extends Command {
         }
         
         echo "proccess completed";
+    }
+
+    protected function getArguments()
+    {
+        return [
+            [
+                "modo", InputArgument::REQUIRED, "modo is required (create,delete)",
+            ],
+            [
+                "classes", InputArgument::REQUIRED, "classes are required (controller,request,repository,model)",
+            ],
+            [
+                "entitysegments", InputArgument::REQUIRED, "specificPath is required",
+            ],
+            [
+                "entity", InputArgument::REQUIRED, "Entidy is required",
+            ],
+            [
+                "maintable", InputArgument::REQUIRED, "Entidy is required",
+            ],
+        ];
     }
 }
