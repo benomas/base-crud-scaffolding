@@ -31,28 +31,28 @@ class BcScaffoldingCommand extends Command {
             $controllerPath  = app_path()."/Http/Controllers/".$fixedEntitysegments;
             if(!file_exists($controllerPath))
                 mkdir($controllerPath);
-            file_put_contents($controllerPath."/".Str::title($this->entity)."Controller.php", $this->controller_template);
+            file_put_contents($controllerPath."/".($this->entity)."Controller.php", $this->controller_template);
         }
 
         if(in_array("request",$this->classes)){
             $requestPath     = app_path()."/Http/Requests/".$fixedEntitysegments;
             if(!file_exists($requestPath))
                 mkdir($requestPath);
-            file_put_contents($requestPath."/".Str::title($this->entity)."Request.php", $this->request_template);
+            file_put_contents($requestPath."/".($this->entity)."Request.php", $this->request_template);
         }
 
         if(in_array("model",$this->classes)){
             $modelPath       = app_path()."/Persistence/Models/".$fixedEntitysegments;
             if(!file_exists($modelPath))
                 mkdir($modelPath);
-            file_put_contents($modelPath."/".Str::title($this->entity).".php", $this->model_template);
+            file_put_contents($modelPath."/".($this->entity).".php", $this->model_template);
         }
 
         if(in_array("repository",$this->classes)){
             $repositoreyPath = app_path()."/Persistence/Repository/".$fixedEntitysegments;
             if(!file_exists($repositoreyPath))
                 mkdir($repositoreyPath);
-            file_put_contents($repositoreyPath."/".Str::title($this->entity)."Repository.php", $this->repository_template);
+            file_put_contents($repositoreyPath."/".($this->entity)."Repository.php", $this->repository_template);
         }
     }
 
@@ -60,44 +60,44 @@ class BcScaffoldingCommand extends Command {
         $fixedEntitysegments = str_replace("\\","/",$this->entitysegments);
 
         if(in_array("controller",$this->classes)){
-            $controllerPath  = app_path()."/Http/Controllers/".$fixedEntitysegments."/".Str::title($this->entity)."Controller.php";
+            $controllerPath  = app_path()."/Http/Controllers/".$fixedEntitysegments."/".($this->entity)."Controller.php";
             unlink($controllerPath);
         }
         if(in_array("request",$this->classes)){
-            $requestPath     = app_path()."/Http/Requests/".$fixedEntitysegments."/".Str::title($this->entity)."Request.php";
+            $requestPath     = app_path()."/Http/Requests/".$fixedEntitysegments."/".($this->entity)."Request.php";
             unlink($requestPath);
         }
         if(in_array("model",$this->classes)){
-            $modelPath       = app_path()."/Persistence/Models/".$fixedEntitysegments."/".Str::title($this->entity).".php";
+            $modelPath       = app_path()."/Persistence/Models/".$fixedEntitysegments."/".($this->entity).".php";
             unlink($modelPath);
         }
         if(in_array("repository",$this->classes)){
-            $repositoreyPath = app_path()."/Persistence/Repository/".$fixedEntitysegments."/".Str::title($this->entity)."Repository.php";
+            $repositoreyPath = app_path()."/Persistence/Repository/".$fixedEntitysegments."/".($this->entity)."Repository.php";
             unlink($repositoreyPath);
         }
     }
 
     public function makeController(){
-        $this->controller_template = str_replace('$ENTITY$', Str::title($this->entity), $this->controller_template);
-        $this->controller_template = str_replace('$ENTITYSEGMENTS$', Str::title($this->entitysegments), $this->controller_template);
+        $this->controller_template = str_replace('$ENTITY$', ($this->entity), $this->controller_template);
+        $this->controller_template = str_replace('$ENTITYSEGMENTS$', ($this->entitysegments), $this->controller_template);
         $this->controller_template = str_replace('$MAINTABLE$', $this->maintable, $this->controller_template);
     }
 
     public function makeRequest(){
-        $this->request_template = str_replace('$ENTITY$', Str::title($this->entity), $this->request_template);
-        $this->request_template = str_replace('$ENTITYSEGMENTS$', Str::title($this->entitysegments), $this->request_template);
+        $this->request_template = str_replace('$ENTITY$', ($this->entity), $this->request_template);
+        $this->request_template = str_replace('$ENTITYSEGMENTS$', ($this->entitysegments), $this->request_template);
         $this->request_template = str_replace('$MAINTABLE$', $this->maintable, $this->request_template);
     }
 
     public function makeModel(){
-        $this->model_template = str_replace('$ENTITY$', Str::title($this->entity), $this->model_template);
-        $this->model_template = str_replace('$ENTITYSEGMENTS$', Str::title($this->entitysegments), $this->model_template);
+        $this->model_template = str_replace('$ENTITY$', ($this->entity), $this->model_template);
+        $this->model_template = str_replace('$ENTITYSEGMENTS$', ($this->entitysegments), $this->model_template);
         $this->model_template = str_replace('$MAINTABLE$', $this->maintable, $this->model_template);
     }
 
     public function makeRepository(){
-        $this->repository_template = str_replace('$ENTITY$', Str::title($this->entity), $this->repository_template);
-        $this->repository_template = str_replace('$ENTITYSEGMENTS$', Str::title($this->entitysegments), $this->repository_template);
+        $this->repository_template = str_replace('$ENTITY$', ($this->entity), $this->repository_template);
+        $this->repository_template = str_replace('$ENTITYSEGMENTS$', ($this->entitysegments), $this->repository_template);
         $this->repository_template = str_replace('$MAINTABLE$', $this->maintable, $this->repository_template);
     }
 
