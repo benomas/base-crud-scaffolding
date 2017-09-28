@@ -82,7 +82,7 @@ class BcScaffoldingCommand extends Command {
         $this->repository_template = str_replace('$MAINTABLE$', Str::title($this->maintable), $this->repository_template);
     }
 
-    public function fire()
+    public function handle()
     {
         $this->entitysegments = $this->ask("specificPath:");
         $this->entity = $this->ask("Entidy:");
