@@ -22,11 +22,11 @@ class BcScaffoldingServiceProvider extends ServiceProvider {
 	 */
 	public function register()
 	{
-        $this->app['BcScaffolding.scaffold'] = $this->app->share(function($app)
+        $this->app['bcscaffolding.bcscaffolding'] = $this->app->share(function($app)
         {
             return new BcScaffoldingCommand();
         });
 
-        $this->commands('bcscaffolding.scaffold');
+        $this->commands('bcscaffolding.bcscaffolding');
 	}
 }
