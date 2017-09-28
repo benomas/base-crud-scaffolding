@@ -1,9 +1,9 @@
 <?php 
-namespace App\Http\Controllers$ENTITYSEGMENTS$;
+namespace App\Http\Controllers\$ENTITYSEGMENTS$;
 
 use App\Http\Controllers\BaseController;
-use App\Persistence\Repository$ENTITYSEGMENTS$\$ENTITY$Repository;
-use App\Http\Requests$ENTITYSEGMENTS$\$ENTITY$Request;
+use App\Persistence\Repository\$ENTITYSEGMENTS$\$ENTITY$Repository;
+use App\Http\Requests\$ENTITYSEGMENTS$\$ENTITY$Request;
 
 class $ENTITY$Controller extends BaseController
 {
