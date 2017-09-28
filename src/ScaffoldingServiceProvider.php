@@ -29,5 +29,4 @@ class BcScaffoldingServiceProvider extends ServiceProvider {
 
         $this->commands('bcscaffolding.scaffold');
 	}
-
 }
