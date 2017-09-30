@@ -31,28 +31,32 @@ class BcScaffoldingCommand extends Command {
             $controllerPath  = app_path()."/Http/Controllers/".$fixedEntitysegments;
             if(!file_exists($controllerPath))
                 mkdir($controllerPath);
-            file_put_contents($controllerPath."/".($this->entity)."Controller.php", $this->controller_template);
+            if(!file_exists(($fileName=$controllerPath."/".($this->entity)."Controller.php")))
+                file_put_contents($fileName, $this->controller_template);
         }
 
         if(in_array("request",$this->classes)){
             $requestPath     = app_path()."/Http/Requests/".$fixedEntitysegments;
             if(!file_exists($requestPath))
                 mkdir($requestPath);
-            file_put_contents($requestPath."/".($this->entity)."Request.php", $this->request_template);
+            if(!file_exists(($fileName=$requestPath."/".($this->entity)."Request.php")))
+                file_put_contents($fileName, $this->request_template);
         }
 
         if(in_array("model",$this->classes)){
             $modelPath       = app_path()."/Persistence/Models/".$fixedEntitysegments;
             if(!file_exists($modelPath))
                 mkdir($modelPath);
-            file_put_contents($modelPath."/".($this->entity).".php", $this->model_template);
+            if(!file_exists(($fileName=$modelPath."/".($this->entity).".php")))
+                file_put_contents($fileName, $this->model_template);
         }
 
         if(in_array("repository",$this->classes)){
             $repositoreyPath = app_path()."/Persistence/Repository/".$fixedEntitysegments;
             if(!file_exists($repositoreyPath))
                 mkdir($repositoreyPath);
-            file_put_contents($repositoreyPath."/".($this->entity)."Repository.php", $this->repository_template);
+            if(!file_exists(($fileName=$repositoreyPath."/".($this->entity)."Repository.php")))
+                file_put_contents($fileName, $this->repository_template);
         }
     }
 
