@@ -8,9 +8,9 @@ use Symfony\Component\Console\Input\InputArgument;
 
 class BcScaffoldingCommand extends Command {
 
-    protected $signature   = 'scaffold {modo} {classes} {entitysegments} {entity} {maintable}';
+    protected $signature   = 'scaffold {modo} {classes} {entitySegments} {entity} {maintable}';
     protected $description = 'Command description.';
-    protected $entitysegments;
+    protected $entitySegments;
     protected $entity;
     protected $maintable;
     protected $classes;
@@ -26,9 +26,9 @@ class BcScaffoldingCommand extends Command {
     }
 
     public function saveFiles(){
-        $fixedEntitysegments = str_replace("\\","/",$this->entitysegments);
+        $fixedEntitySegments = str_replace("\\","/",$this->entitySegments);
         if(in_array("controller",$this->classes)){
-            $controllerPath  = app_path()."/Http/Controllers/".$fixedEntitysegments;
+            $controllerPath  = app_path()."/Http/Controllers/".$fixedEntitySegments;
             if(!file_exists($controllerPath))
                 mkdir($controllerPath);
             if(!file_exists(($fileName=$controllerPath."/".($this->entity)."Controller.php")))
@@ -36,7 +36,7 @@ class BcScaffoldingCommand extends Command {
         }
 
         if(in_array("request",$this->classes)){
-            $requestPath     = app_path()."/Http/Requests/".$fixedEntitysegments;
+            $requestPath     = app_path()."/Http/Requests/".$fixedEntitySegments;
             if(!file_exists($requestPath))
                 mkdir($requestPath);
             if(!file_exists(($fileName=$requestPath."/".($this->entity)."Request.php")))
@@ -44,7 +44,7 @@ class BcScaffoldingCommand extends Command {
         }
 
         if(in_array("model",$this->classes)){
-            $modelPath       = app_path()."/Persistence/Models/".$fixedEntitysegments;
+            $modelPath       = app_path()."/Persistence/Models/".$fixedEntitySegments;
             if(!file_exists($modelPath))
                 mkdir($modelPath);
             if(!file_exists(($fileName=$modelPath."/".($this->entity).".php")))
@@ -52,7 +52,7 @@ class BcScaffoldingCommand extends Command {
         }
 
         if(in_array("repository",$this->classes)){
-            $repositoreyPath = app_path()."/Persistence/Repository/".$fixedEntitysegments;
+            $repositoreyPath = app_path()."/Persistence/Repository/".$fixedEntitySegments;
             if(!file_exists($repositoreyPath))
                 mkdir($repositoreyPath);
             if(!file_exists(($fileName=$repositoreyPath."/".($this->entity)."Repository.php")))
@@ -61,47 +61,47 @@ class BcScaffoldingCommand extends Command {
     }
 
     public function deleteFiles(){
-        $fixedEntitysegments = str_replace("\\","/",$this->entitysegments);
+        $fixedEntitySegments = str_replace("\\","/",$this->entitySegments);
 
         if(in_array("controller",$this->classes)){
-            $controllerPath  = app_path()."/Http/Controllers/".$fixedEntitysegments."/".($this->entity)."Controller.php";
+            $controllerPath  = app_path()."/Http/Controllers/".$fixedEntitySegments."/".($this->entity)."Controller.php";
             unlink($controllerPath);
         }
         if(in_array("request",$this->classes)){
-            $requestPath     = app_path()."/Http/Requests/".$fixedEntitysegments."/".($this->entity)."Request.php";
+            $requestPath     = app_path()."/Http/Requests/".$fixedEntitySegments."/".($this->entity)."Request.php";
             unlink($requestPath);
         }
         if(in_array("model",$this->classes)){
-            $modelPath       = app_path()."/Persistence/Models/".$fixedEntitysegments."/".($this->entity).".php";
+            $modelPath       = app_path()."/Persistence/Models/".$fixedEntitySegments."/".($this->entity).".php";
             unlink($modelPath);
         }
         if(in_array("repository",$this->classes)){
-            $repositoreyPath = app_path()."/Persistence/Repository/".$fixedEntitysegments."/".($this->entity)."Repository.php";
+            $repositoreyPath = app_path()."/Persistence/Repository/".$fixedEntitySegments."/".($this->entity)."Repository.php";
             unlink($repositoreyPath);
         }
     }
 
     public function makeController(){
         $this->controller_template = str_replace('$ENTITY$', ($this->entity), $this->controller_template);
-        $this->controller_template = str_replace('$ENTITYSEGMENTS$', ($this->entitysegments), $this->controller_template);
+        $this->controller_template = str_replace('$ENTITYSEGMENTS$', ($this->entitySegments), $this->controller_template);
         $this->controller_template = str_replace('$MAINTABLE$', $this->maintable, $this->controller_template);
     }
 
     public function makeRequest(){
         $this->request_template = str_replace('$ENTITY$', ($this->entity), $this->request_template);
-        $this->request_template = str_replace('$ENTITYSEGMENTS$', ($this->entitysegments), $this->request_template);
+        $this->request_template = str_replace('$ENTITYSEGMENTS$', ($this->entitySegments), $this->request_template);
         $this->request_template = str_replace('$MAINTABLE$', $this->maintable, $this->request_template);
     }
 
     public function makeModel(){
         $this->model_template = str_replace('$ENTITY$', ($this->entity), $this->model_template);
-        $this->model_template = str_replace('$ENTITYSEGMENTS$', ($this->entitysegments), $this->model_template);
+        $this->model_template = str_replace('$ENTITYSEGMENTS$', ($this->entitySegments), $this->model_template);
         $this->model_template = str_replace('$MAINTABLE$', $this->maintable, $this->model_template);
     }
 
     public function makeRepository(){
         $this->repository_template = str_replace('$ENTITY$', ($this->entity), $this->repository_template);
-        $this->repository_template = str_replace('$ENTITYSEGMENTS$', ($this->entitysegments), $this->repository_template);
+        $this->repository_template = str_replace('$ENTITYSEGMENTS$', ($this->entitySegments), $this->repository_template);
         $this->repository_template = str_replace('$MAINTABLE$', $this->maintable, $this->repository_template);
     }
 
@@ -110,7 +110,7 @@ class BcScaffoldingCommand extends Command {
         $modo                 = $this->argument("modo");
         $classes              = $this->argument("classes");
         $this->classes        = explode(",", $classes);
-        $this->entitysegments = $this->argument("entitysegments");
+        $this->entitySegments = $this->argument("entitySegments");
         $this->entity         = $this->argument("entity");
         if($modo==="create"){
             $this->maintable = $this->argument("maintable");
@@ -155,7 +155,7 @@ class BcScaffoldingCommand extends Command {
                 "classes", InputArgument::REQUIRED, "classes are required (controller,request,repository,model)",
             ],
             [
-                "entitysegments", InputArgument::REQUIRED, "specificPath is required",
+                "entitySegments", InputArgument::REQUIRED, "specificPath is required",
             ],
             [
                 "entity", InputArgument::REQUIRED, "Entidy is required",
