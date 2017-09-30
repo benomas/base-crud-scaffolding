@@ -4,8 +4,10 @@ use App\Persistence\Models\BaseModel;
 
 class $ENTITY$ extends BaseModel
 {
-    protected $table      ='$MAINTABLE$';
+    protected $table      = '$MAINTABLE$';
     protected $primarykey = 'id';
     public $timestamps    = false;
-    protected $fillable   = [];
+    protected $fillable   = [
+
+    ];
 }

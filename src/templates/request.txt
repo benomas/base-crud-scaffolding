@@ -22,6 +22,7 @@ class $ENTITY$Request extends BaseRequest ///FormRequest
      */
     public function defaultRules(){
         $this->rules=[
+        
         ];
     }
 }
